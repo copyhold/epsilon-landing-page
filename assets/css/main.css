@@ -1,0 +1,596 @@
+/*
+	* Gridless version 2.0
+
+	* Credit is left inline and big thanks to Nicolas Gallagher and Jonathan Neal
+
+	* Across this document we use safe CSS hacks: http://mathiasbynens.be/notes/safe-css-hacks
+	* Selectors beggining with an underscore (_selector: property) target only IE6
+	* Selectors beggining with an asterisk (*selector: property) target only IE6 and IE7
+*/
+
+/* HTML5 display definitions
+---------------------------------------- */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, dialog {
+	display: block;
+}
+
+/* Corrects inline-block not defined in IE6/7/8 and FF3 */
+audio, canvas, video {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+audio:not([controls]) {
+	display: none;
+}
+
+/* Ensures content is hidden from all presentations, including screenreaders */
+[hidden] {
+	display: none;
+	visibility: hidden;
+}
+
+/* Base structure
+---------------------------------------- */
+
+/*
+	* The body will work like a 'div#wrapper' (for this to work, the 'body' needs to have a set width)
+
+	* To add a background to the PAGE, set it in the 'html' element
+	* To add a background to the WRAPPER, set it in the 'body' element
+*/
+html {
+	height: 100%;
+	font-size: 100%;
+	overflow-y: scroll; /* Force a scrollbar in non-IE */
+	-webkit-text-size-adjust: 100%; /* Prevent iOS text size adjust on orientation change without disabling user zoom */
+	-ms-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0 auto;
+	min-height: 100%;
+}
+
+/* Fonts settings based on the 100E2R standard: http://www.informationarchitects.jp/en/100e2r/ */
+body, button, input, select, textarea {
+	font: 1em/1.625 almoni-tzar;
+	color: #222; /* Full black on white is too much contrast, #222 is a better default */
+}
+
+/* Add and/or remove tags as your baseline grid needs */
+p, blockquote, q, pre, address, hr, code, samp, dl, ol, ul, form, table, fieldset, menu, h4, h5, h6, img, figure, figcaption, button, hr {
+	margin: 0 0 1.625em;
+}
+
+/* Headings/small
+---------------------------------------- */
+
+/*
+	* Font sizes are based on the golden ratio of 16
+	* See this for the modular scale: ow.ly/5jGl6
+	* Line-heights and margins are adjusted to keep a 26px (1.625em) vertical rhythm across elements 
+*/
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: almoni-tzar;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 4.25em; /* 68px */
+	line-height: 1.1471em;
+	margin: 0 0 0.3824em;
+}
+
+h2 {
+	font-size: 2.625em; /* 42px */
+	line-height: 1.2381em;
+	margin: 0 0 0.619em;
+}
+
+h3 {
+	font-size: 1.625em; /* 26px */
+	line-height: 1em;
+	margin: 0 0 1em;
+}
+
+small {
+	font-size: 0.625em; /* 10px */
+	margin: 0 0 2.6em;
+}
+
+/* Preformatted text and code
+---------------------------------------- */
+
+/* Allows line wrapping of 'pre' */
+pre {
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+pre, code, kbd, samp {
+	font: 1em/1.625em Menlo, Consolas, 'DejaVu Sans Mono', Monaco, 'Courier New', Courier, monospace;
+}
+
+/* Tables
+---------------------------------------- */
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+th {
+	text-align: left;
+}
+
+tr, th, td {
+	padding-right: 1.625em;
+}
+
+/* Forms
+---------------------------------------- */
+
+form {
+	margin: 0;
+}
+
+fieldset {
+	border: 0;
+	padding: 0;
+}
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+}
+
+legend {
+	border: 0;
+	*margin-left: -7px;
+}
+
+button, input, select, textarea {
+	vertical-align: baseline;
+	*vertical-align: middle;
+}
+
+button, input {
+	line-height: normal;
+	*overflow: visible;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+	cursor: pointer;
+	-webkit-appearance: button;
+}
+
+input[type="checkbox"], input[type="radio"] {
+	box-sizing: border-box;
+}
+
+input[type="search"] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+/* Reintroduce inner spacing in 'table' to avoid overlap and whitespace issues in IE6/7 */
+table button, table input {
+	*overflow: auto;
+}
+
+/* Quotes
+---------------------------------------- */
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+blockquote, q, cite {
+	font-style: italic;
+}
+
+blockquote {
+	padding-left: 1.625em;
+	border-left: 1px solid #ddd;
+}
+
+blockquote > p {
+	padding: 0;
+}
+
+/* Lists
+---------------------------------------- */
+
+ul, ol {
+	list-style-position: inside;
+	padding: 0;
+}
+
+li ul, li ol {
+	margin: 0 1.625em;
+}
+
+dl dd {
+	margin-left: 1.625em;
+}
+
+/* Links
+---------------------------------------- */
+
+a, a:visited {
+	text-decoration: none;
+	color: #06c;
+}
+
+a:hover {
+	border-bottom: 1px solid;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+/* Better CSS outline suppression: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active {
+	outline: none;
+}
+
+/* Figures
+---------------------------------------- */
+
+figure {
+	margin: 0;
+}
+
+/* Embedded content
+---------------------------------------- */
+
+img, object, video {
+	max-width: 100%; /* Automatically scales images larger than the container. Consider this first: http://unstoppablerobotninja.com/entry/fluid-images/ */
+	/* _width: 100%; /* IE6 doesn't support max-width, so we just use width. If the image is larger than the container, just uncomment this. If it is smaller than the container, uncomment and change the 100% value to an absolute one */
+}
+
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic; /* Improve IE's resizing of images: css-tricks.com/ie-fix-bicubic-scaling-for-images */
+}
+
+/* Corrects overflow displayed oddly in IE9 */
+svg:not(:root) {
+	overflow: hidden;
+}
+
+/* Abbreviations
+---------------------------------------- */
+
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+/* Marked/inserted/deleted text
+---------------------------------------- */
+
+mark {
+	background: #ff0;
+}
+
+ins {
+	text-decoration: none;
+	background: #ff9;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+/* Others
+---------------------------------------- */
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-bottom: 1px solid #ddd;
+}
+
+strong, b, dt {
+	font-weight: bold;
+}
+
+dfn {
+	font-style: italic;
+}
+
+var, address {
+	font-style: normal;
+}
+
+/* Position 'sub' and 'sup' without affecting line-height: gist.github.com/413930 */
+sub, sup {
+	font-size: 0.625em;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+/* Helper classes
+---------------------------------------- */
+
+/*
+	* Micro clearfix hack, more semantically titled with 'group'
+	* Source: nicolasgallagher.com/micro-clearfix-hack/
+*/
+.group:before, .group:after {
+	content: "";
+	display: table;
+}
+
+.group:after {
+	clear: both;
+}
+
+.group {
+	*zoom: 1;
+}
+
+/* Primary styles
+---------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* Media queries
+---------------------------------------- */
+
+/* The media queries included in here are only placeholder. Modify them as your content requires */
+
+@media only screen and (min-width: 480px) {
+	/* Wide mobile (480px+) styles go here */
+}
+
+@media only screen and (min-width: 768px) { 
+	/* Tablets/netbooks (768px+) styles go here */
+}
+
+@media only screen and (min-width: 1024px) { 
+	/* Desktops (1024px+) styles go here */
+}
+
+/* Print styles
+---------------------------------------- */
+
+/* Print styles inlined to avoid extra HTTP connection */
+
+@media print {
+	* {
+		background: transparent !important;
+		color: black !important; /* Black prints faster: sanbeiji.com/archives/953 */
+		text-shadow: none !important;
+		filter: none !important;
+		-ms-filter: none !important;
+	}
+
+	a, a:visited {
+		text-decoration: underline;
+	}
+
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
+
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+
+	/* Do not show javascript and internal links */
+	a[href^="javascript:"]:after, a[href^="#"]:after {
+		content: ""; 
+	}
+
+	/* Printing Tables: css-discuss.incutio.com/wiki/Printing_Tables */
+	thead {
+		display: table-header-group;
+	}
+
+	tr, img {
+		page-break-inside: avoid;
+	}
+
+	@page {
+		margin: 0.5cm;
+	}
+
+	p, h2, h3 {
+		orphans: 3;
+		widows: 3;
+	}
+
+	h2, h3 {
+		page-break-after: avoid;
+	}
+}
+html {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjExQjZGOEEwMDcyNDExRTI4ODlCRDhBRTc2NzA2NUU2IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjExQjZGOEExMDcyNDExRTI4ODlCRDhBRTc2NzA2NUU2Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTFCNkY4OUUwNzI0MTFFMjg4OUJEOEFFNzY3MDY1RTYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MTFCNkY4OUYwNzI0MTFFMjg4OUJEOEFFNzY3MDY1RTYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6EFkleAAAATklEQVR42hzLyw2AMAwE0V1/giL6r4U+ONEIQiTYBnGbwxse++atu68A5ryktb/GmRWiLuadYMTIZ5I0oNQWisa8CyHfk5WfpBqqXgEGAIZ4H4ClNn/kAAAAAElFTkSuQmCC");
+}
+body {
+    width: 960px;
+    margin: 3px auto 0;
+}
+header {
+    background:url(../img/header.jpg);
+    width:960px;
+    height: 125px;
+    margin: 0 0 9px 0;
+    box-shadow: 0 5px 3px 0px #bbb;
+    border-radius: 4px;
+}
+header span {
+    background:url(../img/headertitle.png) 0 15px no-repeat;
+    width: 456px;
+    height: 96px;
+    display: block;
+    margin: 0 auto 0;
+    padding: 20px 0 0;
+}
+article {
+    margin: 24px 0 0 0;
+    width: 647px;
+    min-height: 365px;
+}
+h1 {
+    color: #a50c04;
+    font-size: 38px;
+    line-height: 42px;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+article li {
+    line-height: 40px;
+    font-size: 26px;
+    text-indent: 30px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAoCAYAAAD6xArmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAATVSURBVHja7JbNbxVVFMB/594777OfVGkRCLRUhCZESpDIyigsrJGYsPEvMJG4NIRucCVQXLBwg4lGYSERZQHBGCIU4+IhIF2QZ8Q0gRaQFKW0UPrevJl5M9fFm/cyLa0aE+KGSW7undxzf+fM+boj1lqexKN4Qs9T8FPwU/D/AZZ/I3RwaKgPaAI0MLtncLD4n8EHh4Z6gV3A2x0dHctTqRQigh8ETN67dw84ARxeTIksAv0ok8ns3rp1K+vWryefzwMQRRYRwXXLjI6O8tOFC5RKpUN7Bgff/0fw0IEDh9etW/fu6wMDGGOw1lJvrUE1jA8JWtfCc+7s9xSLxU9EZPeewcHZOkcnoQf27/94Y3//ewMDA4hIA1ifwzACCxaLjSyI8PzatURhuPn27dttw8PD3z0G3r9v3zsrV6788M0dOwjDkPkXgLWWahhia2QQUKJAhO7ubiYmJl7a1N8/M3z+/MVkuiml1K5XX9uG7/v4vk+1WiWKojmuaCjBIggiAhbCyLJt+3aMMYd27tzpNMAf7N37yooVK/qXLGmnVCrheT6e5+P7AQtdXUoUSiuQmpIosrS1tdPd08PGF198ow4Wx3He6u7poVQqU6l4VCouZdfFdV0qlcpjcG00UqNiI0s1CPB9n97eXrTWOwFlAK2U6lvSvgTXreD5PiKCIPhK8LwKnufT2toCgOM4CEK1GuDVXRaGaK1pa21FRF5ogIFns9kMnu8TBMFjWfhotszk/SlSjl600owx5HI5gE5AG0CiKJoqlV3S6TRRGCFCLTAAojBak83lyGbTta+quHMCa61FKYXrukRR9BBQChDf93+fmXmI1obI1vJTKY0xDpl0qgbNpAHIpDOkM1kcx0Fr3TDAGMP09DRBENyomQN2cnJy+Ob4OE1Neaytla3WCsdxcFJpUimn4R1R4BgH46TQ2qCUxlpLPp9n7MYNpqenzwJWAfbLY8d+uHXrFuVyiZaWJgRBaY1xDI4xaDW3u2qtMVqjtEJEyOXzVIOAsbExvjlx4kwdHM7MzLhXr179tFAosKyri0wmHXcEQZRg51RgvUQAW3NBW2sbhUKBkZGRUxMTE7NAWA+zFIvFqc7OzpW5XK67Z80aJFFhFou1tbKOoogoihrQ5uY8xWKRUydPXjxy9OjnwK+Ap2t6AciNjo5eTznOc5lMelVfXx9KacIonBN9qGVMNpultbWFQqHA18ePXz5z5sxXD2dmxoExoKob5Q/G87zw5ytXrrU0N3fdnZhY3dzSzLKuLnK5HCnHIZVOkc/lSKdT3Lw5zrenTzN87tzFL44c+Wz6wYPrwB/AXcAmK6EdaIkTfPmWLVte3rx58/bVq1ZtWrp0Ke3t7YhSTN2/z+TkJGNjY79cGRn58dKlS5dj2J/AA2B8fqPPAdkY3gE8A3QYY9o2bNjQu6yrq0uUUnfu3Ln727Vr4xXPexiDpuLxCCjHVs8BZwEDZOJ1czya4vdU3LQCwAPcBKwMVAAfmCYGkfBzFG9aoAqUYkVOLCvxnh8rCBLrKhA2escC4DBeh/Ghctyo6rJRYp94To5FwfOVqNhSSbjOJka0gLLHwDaxlviAJG50ScjIPDCJGZNI+igBY56FC/0q2AWMsnWeWUDY/g1MEl9jF1ECwF8DABNyMHgwHJn2AAAAAElFTkSuQmCC") 100% -5px no-repeat;
+    list-style: none;
+}
+aside {
+    float:left;
+    width: 310px;
+    height: 395px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wJGgcCNxRYcnYAAAANSURBVAjXY3j/9vEUAAjiA1QehP7IAAAAAElFTkSuQmCC");
+    background: rgba(255,255,255,0.3);
+    padding: 30px 30px 0 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+aside h2 {
+    font-size: 28px;
+    font-weight: normal;
+}
+form > span {
+    display: block;
+    font-size: 16px;
+    font-family: arial;
+    color: #666;
+}
+label {
+    display: block;
+    background: url(../img/input.png);
+    height: 40px;
+    width: 254px;
+    margin: 15px 0 9px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+label span {
+    font-family: Arial;
+    font-size: 20px;
+    color: #616161;
+    line-height: 40px;
+    float: right;
+
+}
+input {
+    background: none;
+    border: none;
+    outline: none;
+    width: 150px;
+    height: 40px;
+    padding: 0 5px 0 0;
+    color: #666;
+    line-height: 40px;
+    font-size: 20px;
+}
+input[type=submit] {
+    background: url(../img/send.png);
+    width: 169px;
+    height: 62px;
+    cursor: pointer;
+    display: block;
+    text-indent: 1000px;
+    overflow: hidden;
+}
+nav {
+    background: url(../img/footer.jpg);
+    height: 83px;
+    width: 960px;
+    line-height: 83px;
+}
+nav cite,nav a {
+    float: right;
+}
+nav cite {
+    background: url(../img/address.png);
+    height: 35px;
+    width:248px;
+    margin: 23px 10px 0 20px;
+}
+nav a {
+    color: #b50d04;
+    font-size: 20px;
+    padding:0 7px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAUCAIAAAAoW3v1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkM4OUVEQTFFMDcyQjExRTJCMjVFQzJENTU5OTZCRkYyIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkM4OUVEQTFGMDcyQjExRTJCMjVFQzJENTU5OTZCRkYyIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Qzg5RURBMUMwNzJCMTFFMkIyNUVDMkQ1NTk5NkJGRjIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Qzg5RURBMUQwNzJCMTFFMkIyNUVDMkQ1NTk5NkJGRjIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4oLlBmAAAAO0lEQVR42mSM2wkAMAgDg+6/oaP4qLQKgebnuEAiZlZV0gGwiAgyVaVyLDP/cgw3i76ns4G70+DhCDAA96EgqFR0sWgAAAAASUVORK5CYII=") 100% 50% no-repeat;
+}
+nav p {
+    float: left;
+    font-size: 30px;
+    margin: 0 0 0 20px;
+}
+nav p b {
+    font-size: 60px;
+    direction: ltr;
+    padding: 0 0 0 10px;
+    font-weight: normal;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUwMkQ0QTk4MDcyQzExRTJCMzRCOEUyOUEwQTg2OTBDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUwMkQ0QTk5MDcyQzExRTJCMzRCOEUyOUEwQTg2OTBDIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTAyRDRBOTYwNzJDMTFFMkIzNEI4RTI5QTBBODY5MEMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTAyRDRBOTcwNzJDMTFFMkIzNEI4RTI5QTBBODY5MEMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5/840AAAAAb0lEQVR42mJmQAVKQGwMxO+B+AcDDlAOxP+B2IUBh24GqCRIkSASHwzSoBK7oSa9g4rdhYobM0MV3oOaCNIpBcXPgXgWEJ9FttYYagrIhDNIVqK4C6ZAEMqGK2RCMgUE0qHe74QqUEI3TRAXHyDAAMPXGLdz4IYEAAAAAElFTkSuQmCC") 0 50% no-repeat;
+}
+footer {
+    margin: 10px 0 0;
+}
+footer p {
+    font-size: 15px;
+    font-family: arial;
+    color: #616161;
+}
+footer a {
+    background: url(../img/logo.png);
+    height: 70px;
+    width: 187px;
+    float: right;
+    margin: 0 0 0 15px;
+
+}
