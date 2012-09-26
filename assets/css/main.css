@@ -490,6 +490,7 @@ article li {
 aside {
     float:left;
     width: 310px;
+		margin-bottom:4px;
     height: 395px;
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wJGgcCNxRYcnYAAAANSURBVAjXY3j/9vEUAAjiA1QehP7IAAAAAElFTkSuQmCC");
     background: rgba(255,255,255,0.3);
@@ -542,13 +543,14 @@ input[type=submit] {
     height: 62px;
     cursor: pointer;
     display: block;
-    text-indent: 1000px;
+    text-indent: -1000px;
     overflow: hidden;
 }
 nav {
     background: url(../img/footer.jpg);
     height: 83px;
     width: 960px;
+		clear: both;
     line-height: 83px;
 }
 nav cite,nav a {
