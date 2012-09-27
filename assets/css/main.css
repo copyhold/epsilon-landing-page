@@ -245,7 +245,6 @@ a, a:visited {
 }
 
 a:hover {
-	border-bottom: 1px solid;
 }
 
 a:focus {
@@ -470,6 +469,7 @@ header span {
     padding: 20px 0 0;
 }
 article {
+    float: right;
     margin: 24px 0 0 0;
     width: 647px;
     min-height: 365px;
@@ -554,20 +554,28 @@ nav {
 		clear: both;
     line-height: 83px;
 }
-nav cite,nav a {
+nav cite,nav a, nav div {
     float: right;
+}
+nav div {
+    margin: 0 278px 0 -520px;
 }
 nav cite {
     background: url(../img/address.png);
     height: 35px;
     width:248px;
-    margin: 23px 10px 0 20px;
+    margin: 23px 0px 0 0;
 }
 nav a {
     color: #b50d04;
     font-size: 20px;
+    border: none;
     padding:0 7px;
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAUCAIAAAAoW3v1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkM4OUVEQTFFMDcyQjExRTJCMjVFQzJENTU5OTZCRkYyIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkM4OUVEQTFGMDcyQjExRTJCMjVFQzJENTU5OTZCRkYyIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Qzg5RURBMUMwNzJCMTFFMkIyNUVDMkQ1NTk5NkJGRjIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Qzg5RURBMUQwNzJCMTFFMkIyNUVDMkQ1NTk5NkJGRjIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4oLlBmAAAAO0lEQVR42mSM2wkAMAgDg+6/oaP4qLQKgebnuEAiZlZV0gGwiAgyVaVyLDP/cgw3i76ns4G70+DhCDAA96EgqFR0sWgAAAAASUVORK5CYII=") 100% 50% no-repeat;
+}
+nav a:hover {
+    text-decoration: none;
+    border: none!important;
 }
 nav p {
     float: left;

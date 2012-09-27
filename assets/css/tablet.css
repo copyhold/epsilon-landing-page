@@ -10,6 +10,9 @@ header {
 }
 header span {
 }
+article {
+    width: 470px;
+}
 nav {
     background-image: url(../img/footer760.jpg);
     width: 782px;
