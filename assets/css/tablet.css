@@ -1,0 +1,21 @@
+
+body {
+    width: 780px;
+
+}
+header {
+    background:url(../img/header760.jpg);
+    height: 125px;
+    width: 780px;
+}
+header span {
+}
+nav {
+    background-image: url(../img/footer760.jpg);
+    width: 782px;
+}
+nav cite {
+    background-image: url(../img/address760.png);
+    width: 233px;
+    height: 33px;
+}
